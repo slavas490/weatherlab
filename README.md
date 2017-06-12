@@ -19,7 +19,7 @@ $ git clone https://github.com/slavas490/weatherlab.git
 $ make
 ```
 
-Wait little bit for startup you default browser with the project page. If it not happen you can manually go to [http://localhost:8008/](http://localhost:8008/). For run you can use:
+Wait just a little bit for startup you default browser with the project page. If it not happen you can manually go to [http://localhost:8008/](http://localhost:8008/). For run you can use:
 ```bash
 $ ./run
 ```
