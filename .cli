@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ "$1" == "stop" ]
+then
+	echo Stopping...
+	# cd /usr/local/weatherlab/
+	# kill `cat server.pid`
+	# kill `cat client.pid`
+	echo Done
+else
+	echo Starting...
+	# cd /usr/local/weatherlab/
+	nohup npm start 1>/dev/null 2>&1 &
+	# echo $! > server.pid
+	cd view/ && nohup npm start 1>/dev/null 2>&1 &
+	# echo $! > client.pid
+	echo Done
+fi
+
+exit 0
