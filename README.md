@@ -1,6 +1,6 @@
 # weatherlab
 
-Weatherlab it's frontend for weather forecast using [openweathermap.org](http://openweathermap.org) api.
+Weatherlab it's frontend for weather forecast using [openweathermap.org](http://openweathermap.org/) api.
 
 
 # How to use
