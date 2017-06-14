@@ -13,7 +13,12 @@ router.get('/:country_id/:name?', (req, res, next) => {
 		.sort('name')
 		.limit(5)
 		.exec(function(err, list) {
-		    res.send({code: 0, list: list});
+		    if(err){
+		    	res.send({code: 1, err: "Country cannot be found"});
+		    }
+		    else{
+		    	res.send({code: 0, list: list});
+		    }
 		});
 });
 

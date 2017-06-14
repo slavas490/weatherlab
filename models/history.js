@@ -3,7 +3,7 @@ module.exports = function(mongoose){
 	
 	let historySchema = new mongoose.Schema({
 		id: Number,
-		city: { type: Schema.Types.ObjectId, ref: 'cities' },
+		city: { type: Schema.Types.ObjectId, ref: 'city' },
 		time: Number,
 		temp: Number,
 		pressure: Number,

@@ -58,7 +58,7 @@ import inputSearch from '@/components/search'
 import Vue from 'vue'
 import VueScrollTo from 'vue-scrollto'
 
-Vue.use(VueScrollTo, {
+let a = Vue.use(VueScrollTo, {
     container: "body",
     duration: 300,
     easing: "ease",
@@ -66,7 +66,6 @@ Vue.use(VueScrollTo, {
     onDone: false,
     onCancel: false
  })
-
 let URL_PATH = 'http://localhost:3000/api/';
 
 export default {
@@ -119,8 +118,17 @@ export default {
             return new Date(time.getTime() + time.getTimezoneOffset() * 60000)
         },
         getWeather () {
+            if(!this.form.city){
+                swal('Oops...','Sorry, but your city not found!','error')
+                return false
+            }
+
             this.$http.get(URL_PATH + 'weather/'+this.form.city)
                 .then(res => {
+                    setTimeout(()=>{
+                        this.$scrollTo(document.getElementById('map'), 200)
+                    }, this.weatherList.length ? 100 : 1000)
+                    
                     let list = res.body.list
                     this.weatherList = []
                     this.$forceUpdate()
@@ -128,7 +136,7 @@ export default {
                     // start the map
                     let pos = { lat: parseFloat(list.lat), lng: parseFloat(list.lon) }
                     let map = new google.maps.Map(document.getElementById("map"), {
-                        zoom: 8,
+                        zoom: 10,
                         center: pos
                     })
                     let marker = new google.maps.Marker({
@@ -162,6 +170,8 @@ export default {
                             wind_deg: line.wind_deg
                         })
                     }
+
+                    this.form.city = null
                 })
         }
     },

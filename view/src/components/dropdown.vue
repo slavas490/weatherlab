@@ -73,7 +73,13 @@ export default {
 			this.$emit('onSelect', country)
 		},
 		selectCountry (event) {
-			this.changeCountry(this.countryList[0])
+			if(this.countryList.length){
+				this.changeCountry(this.countryList[0])
+			}
+			else{
+				swal('Oops...','Sorry, but your country not found!','error')
+				this.countryFilter = ''
+			}
 			this.__isOpen = false
 		},
 		resize () {

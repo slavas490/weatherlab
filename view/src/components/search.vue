@@ -53,12 +53,19 @@ export default {
 			this.list = []
 			this.$emit('onSelect', city._id)
 			this.$forceUpdate()
+			this.searchText = ''
 		},
 		selectCity () {
 			if(!this.__isOpen) return false
-
-			let value = this.list[this.active]
-			this.changeCity(value)
+			
+			if(this.list.length){
+				let value = this.list[this.active]
+				this.changeCity(value)
+			}
+			else{
+				swal('Oops...','Sorry, but your city not found!','error')
+				this.searchText = ''
+			}
 		}
 	},
 	props: {
